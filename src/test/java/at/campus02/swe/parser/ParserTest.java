@@ -42,7 +42,6 @@ public class ParserTest {
     }
     @Test
     public void testParserTest04Xml() throws Exception {
-
         Calculator cal = mock(Calculator.class);
 
         Parser parser = new Parser(cal);
