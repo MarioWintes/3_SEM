@@ -122,4 +122,41 @@ public class CalculatorTest {
         }
 
     }
+    @Test
+    public void testDotProductPositive() throws Exception {
+        // Setup
+        Calculator calc = new CalculatorImpl();
+
+        calc.push(1);
+        calc.push(3);
+
+        calc.push(2);
+        calc.push(4);
+
+        // Number of elements
+        calc.push(2);
+
+        double result = calc.perform(Operation.dotproduct);
+
+        assertEquals(14, result, 0.0001);
+    }
+
+    @Test
+    public void testNotEnoughElements() throws Exception {
+        // setup
+        Calculator calc = new CalculatorImpl();
+
+        calc.push(1);
+        calc.push(2);
+        calc.push(3);
+        // Push wrong length
+        calc.push(3);
+
+        try {
+            calc.perform(Operation.dotproduct);
+            fail("Exception expected");
+        } catch (CalculatorException e) {
+            assertEquals("Not enough elements on stack for dotproduct", e.getMessage());
+        }
+    }
 }
