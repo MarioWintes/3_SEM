@@ -1,13 +1,12 @@
 package at.campus02.swe.logic;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 import at.campus02.swe.Calculator;
 import at.campus02.swe.CalculatorException;
 import at.campus02.swe.Calculator.Operation;
+
+import static org.junit.Assert.*;
 
 public class CalculatorTest {
 
@@ -29,21 +28,43 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testSimpleModOperation() throws Exception {
-
-        //setup
+    public void testSimpleModOperationOne() throws Exception {
         Calculator calc = new CalculatorImpl();
 
-        //execute
         calc.push(3);
         calc.push(2);
         double result = calc.perform(Operation.mod);
 
-        //verify
         assertEquals(1, result, 0);
-
-
     }
+
+
+    @Test
+    public void testSimpleModOperationTwo() throws Exception {
+        Calculator calc = new CalculatorImpl();
+
+        calc.push(10);
+        calc.push(4);
+        double result = calc.perform(Operation.mod);
+
+        assertEquals(2, result, 0);
+    }
+
+    @Test
+    public void testSimpleModOperationNegativ() throws Exception {
+        Calculator calc = new CalculatorImpl();
+
+        calc.push(5); // only one value pushed
+
+        try {
+            calc.perform(Operation.mod);
+            fail("Exception expected");
+        } catch (CalculatorException e) {
+            // Only Check if exception was raised
+            assertNotNull(e);
+        }
+    }
+
 
     @Test
     public void testSimpleMulOperation() throws Exception {
