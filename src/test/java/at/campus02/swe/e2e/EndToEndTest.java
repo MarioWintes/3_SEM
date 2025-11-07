@@ -51,4 +51,22 @@ public class EndToEndTest {
 
         assertEquals(5,result,0);
     }
+    @Test
+    public void e2eTestSin() throws CalculatorException, XMLStreamException, FileNotFoundException {
+        Calculator calculator = new CalculatorImpl();
+        Parser parser = new Parser(calculator);
+        File file = new File("src/test/resources/test07.xml");
+        double result = parser.parse(file);
+
+        assertEquals(0.052335956,result,0.000000001);
+    }
+    @Test
+    public void e2eTestCos() throws CalculatorException, XMLStreamException, FileNotFoundException {
+        Calculator calculator = new CalculatorImpl();
+        Parser parser = new Parser(calculator);
+        File file = new File("src/test/resources/test09.xml");
+        double result = parser.parse(file);
+
+        assertEquals(0.992546151,result,0.000000001);
+    }
 }

@@ -19,23 +19,28 @@ public class CalculatorImpl implements Calculator {
             double b = pop();
             double a = pop();
 
-            switch (op) {
-                case add:
-                    return a + b;
-                case sub:
-                    return a - b;
-                case div:
-                    double c = a / b;
-                    if (Double.isInfinite(c))
-                        throw new CalculatorException("Division by zero");
-                    return c;
-                case mul:
-                    return a * b;
-                case mod:
-                    return a % b;
-            }
-            return 0;
+        switch (op) {
+            case add:
+                return a + b;
+            case sub:
+                return a - b;
+            case div:
+                double c = a / b;
+                if (Double.isInfinite(c))
+                    throw new CalculatorException("Division by zero");
+                return c;
+            case mul:
+                return a * b;
+            case mod:
+                return a % b;
+            case sin:
+                push(a);
+                return Math.sin(Math.toRadians(b));
+            case cos:
+                push(a);
+                return Math.cos(Math.toRadians(b));
         }
+        return 0;}
     }
 
     private double performDotProduct() throws CalculatorException {
