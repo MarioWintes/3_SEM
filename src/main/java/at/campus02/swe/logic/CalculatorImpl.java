@@ -30,6 +30,12 @@ public class CalculatorImpl implements Calculator {
                 return a * b;
             case mod:
                 return a % b;
+            case sin:
+                push(a);
+                return Math.sin(Math.toRadians(b));
+            case cos:
+                push(a);
+                return Math.cos(Math.toRadians(b));
         }
         return 0;
     }
