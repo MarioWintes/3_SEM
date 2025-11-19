@@ -69,4 +69,14 @@ public class EndToEndTest {
 
         assertEquals(0.992546151,result,0.000000001);
     }
+
+    @Test
+    public void e2eTestCosOneValue() throws CalculatorException, XMLStreamException, FileNotFoundException {
+        Calculator calculator = new CalculatorImpl();
+        Parser parser = new Parser(calculator);
+        File file = new File("src/test/resources/test10.xml");
+        double result = parser.parse(file);
+
+        assertEquals(0.994521895,result,0.000000001);
+    }
 }

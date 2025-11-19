@@ -15,9 +15,21 @@ public class CalculatorImpl implements Calculator {
 
         if(op == Operation.dotproduct){
             return performDotProduct();
-        }else{
-            double b = pop();
-            double a = pop();
+        }
+
+        if (op == Operation.sin || op == Operation.cos) {
+            double x = pop();
+
+            switch (op){
+                case sin:
+                    return Math.sin(Math.toRadians(x));
+                case cos:
+                    return Math.cos(Math.toRadians(x));
+            }
+        }
+
+        double b = pop();
+        double a = pop();
 
         switch (op) {
             case add:
@@ -33,14 +45,9 @@ public class CalculatorImpl implements Calculator {
                 return a * b;
             case mod:
                 return a % b;
-            case sin:
-                push(a);
-                return Math.sin(Math.toRadians(b));
-            case cos:
-                push(a);
-                return Math.cos(Math.toRadians(b));
+
         }
-        return 0;}
+        return 0;
     }
 
     private double performDotProduct() throws CalculatorException {
