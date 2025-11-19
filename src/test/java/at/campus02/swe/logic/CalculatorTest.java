@@ -94,7 +94,6 @@ public class CalculatorTest {
     public void testSimpleSinOperation() throws Exception{
 
         Calculator calc = new CalculatorImpl();
-        calc.push(6);
         calc.push(5);
         double result = calc.perform(Operation.sin);
 
@@ -104,7 +103,6 @@ public class CalculatorTest {
     public void testSimpleCosOperation() throws Exception{
 
         Calculator calc = new CalculatorImpl();
-        calc.push(7);
         calc.push(8);
         double result = calc.perform(Operation.cos);
 
@@ -113,9 +111,6 @@ public class CalculatorTest {
 
 
 
-
-
-    //
     @Test(expected = CalculatorException.class)
     public void testPopOnEmptyStack() throws Exception {
 
